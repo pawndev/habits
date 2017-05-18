@@ -36,7 +36,7 @@ I recommend to work with visual-studio-code, because it's one of the most popula
 - [ ] Routes
 - [ ] Plugins
 - [ ] Services
-- [ ] @inject decorator
+- [ ] @inject decorator || DI
 - [ ] ORM
 - [ ] Units Test
 - [ ] TSLint
