@@ -1,4 +1,16 @@
 {
+  "name": "hapits",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "setup": "yarn && typings install",
+    "start": "node dist/index.js",
+    "watch": "nodemon -e ts --watch app --exec \"yarn run build && yarn run start\"",
+    "build": "tsc"
+  },
   "devDependencies": {
     "@types/boom": "^4.3.2",
     "@types/hapi": "^16.1.0",
@@ -9,15 +21,10 @@
     "typescript": "^2.3.2"
   },
   "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^4.0.0",
-    "gulp-clean-css": "^3.3.1",
-    "gulp-livereload": "^3.8.1",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.0",
-    "gulp-typescript": "^3.1.6",
+    "boom": "^4.3.1",
     "hapi": "^16.1.1",
     "hapi-decorators": "^0.4.3",
+    "joi": "^10.4.2",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.26"
   }
