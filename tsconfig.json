@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "declaration": true,
+        "noImplicitAny": false,
+        "removeComments": false,
+        "noLib": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "target": "es6",
+        "sourceMap": false,
+        "outDir": "build"
+    },
+    "typeRoots": ["./typings"],
+    "exclude": [
+        "node_modules",
+        "build",
+        "typings"
+    ]
+}
