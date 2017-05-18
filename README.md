@@ -28,7 +28,7 @@ To watch (compile and restart) the project: ``` yarn run watch ```
 I recommend to work with visual-studio-code, because it's one of the most popular editor to write in typescript.
 
 ### TODO
-- [ ] npm tasks (build, watch, start, test, setup, sass)
+- [ ] npm tasks (build, watch, start, test, setup, sass, lint)
 - [ ] Controllers
 - [ ] Config (DB, Server, Uri, Modules[decorations, decorators, controller, model], Staticfiles, Views)
 - [ ] Decorations
