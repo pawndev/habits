@@ -6,7 +6,7 @@ export default class App {
 
     constructor(HapiSettings: Object) {
         this.server = new Hapi.Server();
-        this.server.connection(<Hapi.IServerConnectionOptions>HapiSettings);
+        this.server.connection(<Hapi.ServerConnectionOptions>HapiSettings);
     }
 
     Start() {
@@ -18,7 +18,7 @@ export default class App {
         return this;
     }
 
-    AddRoutes(routesConfig: Array<Hapi.IRouteConfiguration>) {
+    AddRoutes(routesConfig: Array<Hapi.RouteConfiguration>) {
         this.server.route(routesConfig);
         return this;
     }
