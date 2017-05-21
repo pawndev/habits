@@ -6,11 +6,12 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf dist habits",
     "setup": "yarn && typings install",
-    "start": "node dist/index.js",
-    "watch": "nodemon -e ts --watch app --exec \"yarn run build && yarn run start\"",
-    "build": "yarn run clean && tsc"
+    "build": "yarn run clean && tsc",
+    "build:cli": "",
+    "build:watch": "nodemon -e ts --watch app --exec \"yarn run build && yarn run start\"",
+    "start": "node dist/index.js"
   },
   "devDependencies": {
     "@types/boom": "^4.3.2",
