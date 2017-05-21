@@ -1,0 +1,17 @@
+{
+    "Common": {
+        "Controller": [
+            "IndexController"
+        ],
+        "Decorations": [
+            "BoomDecorations"
+        ],
+        "Factory": [],
+        "Interface": [],
+        "Model": [],
+        "Plugins": [
+            "TestPlugins"
+        ],
+        "Services": []
+    }
+}
