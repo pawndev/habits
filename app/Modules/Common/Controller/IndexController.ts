@@ -16,27 +16,27 @@ export default class TestController implements Controller {
     @validate({
         payload: false
     })
-    getHandler(request: Hapi.Request, reply: Hapi.IReply) {
+    getHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
         reply({ success: true, msg: "billy" });
     }
 
     @post('/')
-    postHandler(request: Hapi.Request, reply: Hapi.IReply) {
+    postHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
         reply({ success: true });
     }
 
     @put('/{id}')
-    putHandler(request: Hapi.Request, reply: Hapi.IReply) {
+    putHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
         reply({ success: true });
     }
 
     @route('delete', '/{id}')
-    deleteHandler(request: Hapi.Request, reply: Hapi.IReply) {
+    deleteHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
         reply({ success: true });
     }
 
     @get('/{id}')
-    getOneHandler(request: Hapi.Request, reply: Hapi.IReply) {
+    getOneHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
         reply({ success: true, param: request.params.id });
     }
 }
