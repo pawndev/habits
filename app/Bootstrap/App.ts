@@ -1,5 +1,6 @@
 import * as Hapi from 'hapi';
 import { IPlugin } from '../Modules/Common/Interface/Hapi/IPlugin';
+import { IModuleObject } from './Interface/IModuleObject';
 
 export default class App {
     private server: Hapi.Server;
@@ -14,18 +15,51 @@ export default class App {
         return this.server.start();
     }
 
-    AddModules(ModulesObject) {
+    AddModules(ModulesObject: Array<IModuleObject>) {
+        for (let currentModuleString in ModulesObject) {
+            let currentModule: IModuleObject = ModulesObject[currentModuleString];
 
-        for (let module in ModulesObject) {
-            let currentController = require(`${this.baseModulePath}/Controller/`)
+            this.AddRoutes(currentModule.Controller)
+            this.AddDecorations(currentModule.Decorations);
+            this.AddPlugins(currentModule.Plugins);
         }
 
         return this;
     }
 
-    private AddDecorations(decorationsArray: Array<IPlugin>) {
-        this.server.register(decorationsArray);
+    private AddDecorations(DecorationsArray: string[]) {
+        let indexDecorationArray = 0;
+        let decorationArrayLength = DecorationsArray.length;
+        let decorationsInstance: Array<IPlugin> = [];
+
+        for (;indexDecorationArray < decorationArrayLength; indexDecorationArray++) {
+            let currentDecorationsString: string = DecorationsArray[indexDecorationArray];
+            let currentDecorationsImport = require(`${this.baseModulePath}/Decorations/${currentDecorationsString}`);
+            let currentDecoration = new currentDecorationsImport();
+
+            decorationsInstance.push(currentDecoration);
+        }
         
+        this.server.register(decorationsInstance);
+
+        return this;
+    }
+
+    private AddPlugins(PluginsArray: string[]) {
+        let indexPluginArray = 0;
+        let pluginArrayLength = PluginsArray.length;
+        let pluginsInstance: Array<IPlugin> = [];
+
+        for (;indexPluginArray < pluginArrayLength; indexPluginArray++) {
+            let currentPluginString: string = PluginsArray[indexPluginArray];
+            let currentPluginImport = require(`${this.baseModulePath}/Decorations/${currentPluginString}`);
+            let currentPlugin = new currentPluginImport();
+
+            pluginsInstance.push(currentPlugin);
+        }
+        
+        this.server.register(pluginsInstance);
+
         return this;
     }
 
@@ -44,11 +78,6 @@ export default class App {
         
         this.server.route(controllersInstance);
 
-        return this;
-    }
-
-    private AddPlugins(pluginsArray: Array<IPlugin>) {
-        this.server.register(pluginsArray);
         return this;
     }
 }
