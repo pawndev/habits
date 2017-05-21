@@ -1,5 +1,4 @@
-require("reflect-metadata");
-
+import 'reflect-metadata';
 import Config from './Config';
 import App from './Bootstrap/App'
 
