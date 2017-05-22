@@ -19,23 +19,23 @@ export default class App {
         for (let currentModuleString in ModulesObject) {
             let currentModule: IModuleObject = ModulesObject[currentModuleString];
 
-            this.AddRoutes(currentModule.Controller)
-            this.AddDecorations(currentModule.Decorations);
-            this.AddPlugins(currentModule.Plugins);
+            this.AddRoutes(currentModule.Controller, currentModuleString)
+            this.AddDecorations(currentModule.Decorations, currentModuleString);
+            this.AddPlugins(currentModule.Plugins, currentModuleString);
         }
 
         return this;
     }
 
-    private AddDecorations(DecorationsArray: string[]) {
+    private AddDecorations(DecorationsArray: string[], moduleName: string) {
         let indexDecorationArray = 0;
         let decorationArrayLength = DecorationsArray.length;
         let decorationsInstance: Array<IPlugin> = [];
 
         for (;indexDecorationArray < decorationArrayLength; indexDecorationArray++) {
             let currentDecorationsString: string = DecorationsArray[indexDecorationArray];
-            let currentDecorationsImport = require(`${this.baseModulePath}/Decorations/${currentDecorationsString}`);
-            let currentDecoration = new currentDecorationsImport();
+            let currentDecorationsImport = require(`${this.baseModulePath}/${moduleName}/Decorations/${currentDecorationsString}`);
+            let currentDecoration = new currentDecorationsImport.default();
 
             decorationsInstance.push(currentDecoration);
         }
@@ -45,15 +45,15 @@ export default class App {
         return this;
     }
 
-    private AddPlugins(PluginsArray: string[]) {
+    private AddPlugins(PluginsArray: string[], moduleName: string) {
         let indexPluginArray = 0;
         let pluginArrayLength = PluginsArray.length;
         let pluginsInstance: Array<IPlugin> = [];
 
         for (;indexPluginArray < pluginArrayLength; indexPluginArray++) {
             let currentPluginString: string = PluginsArray[indexPluginArray];
-            let currentPluginImport = require(`${this.baseModulePath}/Decorations/${currentPluginString}`);
-            let currentPlugin = new currentPluginImport();
+            let currentPluginImport = require(`${this.baseModulePath}/${moduleName}/Plugins/${currentPluginString}`);
+            let currentPlugin = new currentPluginImport.default();
 
             pluginsInstance.push(currentPlugin);
         }
@@ -63,20 +63,20 @@ export default class App {
         return this;
     }
 
-    private AddRoutes(ControllersArray: string[]) {
+    private AddRoutes(ControllersArray: string[], moduleName: string) {
         let indexControllerArray = 0;
         let controllerArrayLength = ControllersArray.length;
         let controllersInstance: Array<Hapi.RouteConfiguration> = [];
 
         for (;indexControllerArray < controllerArrayLength; indexControllerArray++) {
             let currentControllerString: string = ControllersArray[indexControllerArray];
-            let currentControllerImport = require(`${this.baseModulePath}/Controller/${currentControllerString}`);
-            let currentController = new currentControllerImport();
-
-            controllersInstance.push(currentController);
+            let currentControllerImport = require(`${this.baseModulePath}/${moduleName}/Controller/${currentControllerString}`);
+            let currentController = new currentControllerImport.default();
+            this.server.route(currentController.routes());
+            // controllersInstance.push(currentController.routes());
         }
         
-        this.server.route(controllersInstance);
+        // this.server.route(controllersInstance);
 
         return this;
     }

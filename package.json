@@ -28,6 +28,7 @@
     "hapi-decorators": "^0.4.3",
     "joi": "^10.4.2",
     "lodash": "^4.17.4",
-    "mongodb": "^2.2.26"
+    "mongodb": "^2.2.26",
+    "reflect-metadata": "^0.1.10"
   }
 }
