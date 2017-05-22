@@ -10,6 +10,7 @@
     "setup": "yarn && typings install",
     "build": "yarn run clean && tsc",
     "build:cli": "",
+    "nunjucks": "copyfiles app/**/*.njk app/**/*.css dist/",
     "build:watch": "nodemon -e ts --watch app --exec \"yarn run build && yarn run start\"",
     "start": "node dist/index.js"
   },

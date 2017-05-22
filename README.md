@@ -8,6 +8,7 @@ npm install -g bower
 npm install -g nodemon
 npm install -g typings
 npm install -g rimraf
+npm install -g copyfiles
 ```
 
 And for install yarn, please check the [official yarn website]
