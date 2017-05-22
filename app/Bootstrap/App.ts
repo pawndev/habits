@@ -15,6 +15,14 @@ export default class App {
         return this.server.start();
     }
 
+    AddStaticPlugins(StaticPlugins: Array<any>) {
+        this.server.register(StaticPlugins, (err) => {
+            if (err) throw err;
+        });
+
+        return this;
+    }
+
     AddModules(ModulesObject: Array<IModuleObject>) {
         for (let currentModuleString in ModulesObject) {
             let currentModule: IModuleObject = ModulesObject[currentModuleString];

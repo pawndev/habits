@@ -6,4 +6,5 @@ export interface IConfig {
     DB: Object;
     ServerSettings: any;
     Uri: any;
+    StaticPlugins: Array<any>;
 }

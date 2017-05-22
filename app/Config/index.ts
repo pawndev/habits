@@ -2,6 +2,7 @@ import { IConfig } from './Interface/IConfig'
 import DBConfig from './DBConfig';
 import ServerSettings from './ServerSettings';
 import Uri from './Uri';
+import StaticPlugins from './StaticPlugins';
 // import Routes from './Routes';
 // import Plugins from './Plugins';
 // import Decorations from './Decorations';
@@ -13,9 +14,7 @@ const Config : IConfig = {
     DB: DBConfig,
     ServerSettings: ServerSettings,
     Uri: Uri,
-    // Routes: Routes,
-    // Plugins: Plugins,
-    // Decorations: Decorations
+    StaticPlugins: StaticPlugins
 };
 
 export default Config;

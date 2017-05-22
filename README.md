@@ -41,8 +41,8 @@ I recommend to work with visual-studio-code, because it's one of the most popula
     - [x] DB
     - [x] Server
     - [ ] Static files
-    - [ ] views
-    - [ ] Npm hapi Plugins
+    - [ ] Views
+    - [x] Npm hapi Plugins
 - [x] Controllers
 - [x] Decorations
 - [x] Interface
