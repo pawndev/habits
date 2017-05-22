@@ -1,8 +1,8 @@
 {
-  "name": "hapits",
+  "name": "habits",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "author": "",
   "license": "ISC",
   "scripts": {

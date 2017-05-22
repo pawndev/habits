@@ -4,6 +4,7 @@ To start this project make sure you've typescript, typings, nodemon, yarn
 
 ```bash
 npm install -g typescript
+npm install -g bower
 npm install -g nodemon
 npm install -g typings
 npm install -g rimraf

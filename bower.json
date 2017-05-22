@@ -1,0 +1,25 @@
+{
+  "name": "habits",
+  "description": "framework that wrap hapi/typescript/joi/boom and many other good things",
+  "main": "dist/index.js",
+  "authors": [
+    "Christophe Coquelet <coquelet.c@gmail.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "typescript",
+    "hapi",
+    "framework",
+    "joi",
+    "boom"
+  ],
+  "homepage": "https://github.com/Lesspion/habits",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
