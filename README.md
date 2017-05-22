@@ -30,15 +30,29 @@ I recommend to work with visual-studio-code, because it's one of the most popula
 
 ### TODO
 - [ ] npm tasks (build, watch, start, test, setup, sass, lint)
-- [ ] Controllers
-- [ ] Config (DB, Server, Uri, Modules[decorations, decorators, controller, model], Staticfiles, Views)
-- [ ] Decorations
-- [ ] Interface
-- [ ] Routes
-- [ ] Plugins
-- [ ] Services
+    - [x] build
+    - [x] watch
+    - [x] start
+    - [ ] test
+    - [x] setup
+    - [ ] sass
+    - [ ] lint
+- [ ] Config
+    - [x] DB
+    - [x] Server
+    - [ ] Static files
+    - [ ] views
+    - [ ] Npm hapi Plugins
+- [x] Controllers
+- [x] Decorations
+- [x] Interface
+- [x] Routes
+- [x] Plugins
+- [x] Services
 - [ ] @inject decorator || DI
 - [ ] ORM
+    - [ ] Implementation
+    - [ ] Entity
 - [ ] Units Test
 - [ ] TSLint
 - [ ] File Logger
