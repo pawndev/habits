@@ -38,7 +38,7 @@ I recommend to work with visual-studio-code, because it's one of the most popula
     - [ ] sass
     - [ ] lint
 - [ ] Config
-    - [x] DB
+    - [ ] DB
     - [x] Server
     - [ ] Static files
     - [ ] Views
