@@ -2,6 +2,8 @@ import * as Hapi from 'hapi';
 import { IPlugin } from '../Modules/Common/Interface/Hapi/IPlugin';
 import { IModuleObject } from './Interface/IModuleObject';
 
+const Path = require('path');
+
 export default class App {
     private server: Hapi.Server;
     private baseModulePath: string = `../Modules`;
@@ -13,6 +15,25 @@ export default class App {
 
     Start() {
         return this.server.start();
+    }
+
+    LoadAssets(AssetsObject: any) {
+        let AssetsDir = AssetsObject.dir,
+            assetsDirIndex = 0,
+            assetsDirLength = AssetsDir.length;
+        let assetsFiles = AssetsObject.file,
+            assetsFilesIndex = 0,
+            assetsFilesLength = assetsFiles.length;
+
+        for (;assetsDirIndex < assetsDirLength; assetsDirIndex += 1) {
+            this.LoadAssetDir(AssetsDir[assetsDirIndex].path, AssetsDir[assetsDirIndex].pathDir);
+        }
+
+        for (;assetsFilesIndex < assetsFilesLength; assetsFilesIndex += 1) {
+            this.LoadAssetFile(assetsFiles[assetsFilesIndex].path, assetsFiles[assetsFilesIndex].pathFile);
+        }
+
+        return this;
     }
 
     AddStaticPlugins(StaticPlugins: Array<any>) {
@@ -31,6 +52,34 @@ export default class App {
             this.AddDecorations(currentModule.Decorations, currentModuleString);
             this.AddPlugins(currentModule.Plugins, currentModuleString);
         }
+
+        return this;
+    }
+
+    private LoadAssetDir(path: string, dirPath: string) {
+        this.server.route({
+            method: 'GET',
+            path: `${path}/{param*}`,
+            handler: {
+                directory: {
+                    path: Path.join(__dirname, dirPath),
+                    listing: false,
+                    index: false
+                }
+            }
+        });
+
+        return this;
+    }
+
+    private LoadAssetFile(path: string, pathFile: string) {
+        this.server.route({
+            method: 'GET',
+            path: path,
+            handler: function (request, reply) {
+                (reply as any).file(Path.join(__dirname, pathFile));
+            }
+        });
 
         return this;
     }

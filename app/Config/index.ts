@@ -3,9 +3,7 @@ import DBConfig from './DBConfig';
 import ServerSettings from './ServerSettings';
 import Uri from './Uri';
 import StaticPlugins from './StaticPlugins';
-// import Routes from './Routes';
-// import Plugins from './Plugins';
-// import Decorations from './Decorations';
+import Assets from './Assets';
 
 const env = process.env;
 
@@ -14,7 +12,8 @@ const Config : IConfig = {
     DB: DBConfig,
     ServerSettings: ServerSettings,
     Uri: Uri,
-    StaticPlugins: StaticPlugins
+    StaticPlugins: StaticPlugins,
+    Assets: Assets
 };
 
 export default Config;

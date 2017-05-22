@@ -7,4 +7,5 @@ export interface IConfig {
     ServerSettings: any;
     Uri: any;
     StaticPlugins: Array<any>;
+    Assets: Object;
 }

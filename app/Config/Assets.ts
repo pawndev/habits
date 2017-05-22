@@ -1,13 +1,14 @@
 const Assets = {
-    "dir": {
-        "/public": {
-            "path": "../public"
+    "dir": [
+        {
+            "path": "/public",
+            "pathDir": "../public"
         }
-    },
+    ],
     "file": [
         {
-            "path": "/assets/bootstrap.js",
-            "file": ""
+            "path": "/assets/jquery.js",
+            "pathFile": `../../bower_components/jquery/dist/jquery.min.js`
         }
     ]
 };

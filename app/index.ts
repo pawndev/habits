@@ -7,6 +7,7 @@ let ModulesObject = require('../modules.json');
 const Application = new App(Config.ServerSettings.Hapi);
 Application
 	.AddStaticPlugins(Config.StaticPlugins)
+	.LoadAssets(Config.Assets)
 	.AddModules(ModulesObject)
 	.Start().then(() => {
 		console.info(`Server started successfully on port ${Config.ServerSettings.Hapi.port}`);
