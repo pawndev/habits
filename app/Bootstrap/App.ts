@@ -44,7 +44,7 @@ export default class App {
         return this;
     }
 
-    AddModules(ModulesObject: Array<IModuleObject>) {
+    AddModules(ModulesObject: Array<IModuleObject>, ViewsConfig: Object) {
         for (let currentModuleString in ModulesObject) {
             let currentModule: IModuleObject = ModulesObject[currentModuleString];
 
@@ -52,6 +52,8 @@ export default class App {
             this.AddDecorations(currentModule.Decorations, currentModuleString);
             this.AddPlugins(currentModule.Plugins, currentModuleString);
         }
+        let moduleNameList = Object.keys(ModulesObject);
+        this.SetTemplateEngine(moduleNameList, ViewsConfig);
 
         return this;
     }
@@ -123,18 +125,31 @@ export default class App {
     private AddRoutes(ControllersArray: string[], moduleName: string) {
         let indexControllerArray = 0;
         let controllerArrayLength = ControllersArray.length;
-        let controllersInstance: Array<Hapi.RouteConfiguration> = [];
 
         for (;indexControllerArray < controllerArrayLength; indexControllerArray++) {
             let currentControllerString: string = ControllersArray[indexControllerArray];
             let currentControllerImport = require(`${this.baseModulePath}/${moduleName}/Controller/${currentControllerString}`);
             let currentController = new currentControllerImport.default();
+
             this.server.route(currentController.routes());
-            // controllersInstance.push(currentController.routes());
         }
         
-        // this.server.route(controllersInstance);
-
         return this;
+    }
+
+    private SetTemplateEngine(ModulesNameList: string[], ViewsConfig: Object) {
+        let templateDirectories: string[] = [];
+
+        ModulesNameList.forEach(key => {
+            templateDirectories.push(Path.join(__dirname, this.baseModulePath, key, 'Views'));
+        });
+
+        let ViewsConfigFork: Object = Object.assign({
+            path: templateDirectories,
+            layoutPath: Path.join(__dirname, this.baseModulePath, "Common/Views/layout"),
+            helpersPath: Path.join(__dirname, this.baseModulePath, "Common/Views/helpers"),
+        }, ViewsConfig);
+
+        (this.server as any).views(ViewsConfigFork);
     }
 }

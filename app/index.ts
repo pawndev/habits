@@ -8,7 +8,7 @@ const Application = new App(Config.ServerSettings.Hapi);
 Application
 	.AddStaticPlugins(Config.StaticPlugins)
 	.LoadAssets(Config.Assets)
-	.AddModules(ModulesObject)
+	.AddModules(ModulesObject, Config.Views)
 	.Start().then(() => {
 		console.info(`Server started successfully on port ${Config.ServerSettings.Hapi.port}`);
 	}).catch((err) => {

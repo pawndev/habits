@@ -38,12 +38,14 @@ I recommend to work with visual-studio-code, because it's one of the most popula
     - [ ] test
     - [x] setup
     - [ ] sass
+    - [ ] move-static-files
     - [ ] lint
 - [ ] Config
     - [ ] DB
     - [x] Server
     - [x] Static files
-    - [ ] Views
+    - [x] Views
+    - [ ] Set Server/request/reply Interface with new method (decorations, view, etc...)
     - [x] Npm hapi Plugins
 - [x] Controllers
 - [x] Decorations

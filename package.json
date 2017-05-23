@@ -12,6 +12,7 @@
     "build:cli": "",
     "nunjucks": "copyfiles app/**/*.njk app/**/*.css dist/",
     "build:watch": "nodemon -e ts --watch app --exec \"yarn run build && yarn run start\"",
+    "build:start": "yarn run build && yarn run start",
     "start": "node dist/index.js"
   },
   "devDependencies": {
@@ -31,6 +32,7 @@
     "joi": "^10.4.2",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.26",
+    "nunjucks": "^3.0.0",
     "reflect-metadata": "^0.1.10",
     "vision": "^4.1.1"
   }

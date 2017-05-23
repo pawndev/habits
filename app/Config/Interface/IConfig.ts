@@ -8,4 +8,5 @@ export interface IConfig {
     Uri: any;
     StaticPlugins: Array<any>;
     Assets: Object;
+    Views: Object;
 }

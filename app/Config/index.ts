@@ -4,6 +4,7 @@ import ServerSettings from './ServerSettings';
 import Uri from './Uri';
 import StaticPlugins from './StaticPlugins';
 import Assets from './Assets';
+import Views from './Views';
 
 const env = process.env;
 
@@ -13,7 +14,8 @@ const Config : IConfig = {
     ServerSettings: ServerSettings,
     Uri: Uri,
     StaticPlugins: StaticPlugins,
-    Assets: Assets
+    Assets: Assets,
+    Views: Views
 };
 
 export default Config;

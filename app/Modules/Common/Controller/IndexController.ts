@@ -17,7 +17,11 @@ export default class TestController implements Controller {
         payload: false
     })
     getHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
-        reply({ success: true, msg: "billy" });
+        (reply as any).view("index", {
+            title: request.server.version,
+            message: 'Index'
+        });
+        // reply({ success: true, msg: "billy" });
     }
 
     @post('/')
