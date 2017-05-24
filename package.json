@@ -8,11 +8,12 @@
   "scripts": {
     "clean": "rimraf dist habits",
     "setup": "yarn && typings install",
-    "build": "yarn run clean && tsc",
-    "build:cli": "",
     "nunjucks": "copyfiles app/**/*.njk app/**/*.css dist/",
+    "build:ts": "tsc",
+    "build:sass": "node-sass -r app/public/sass/ -o dist/public/css/",
     "build:watch": "nodemon -e ts --watch app --exec \"yarn run build && yarn run start\"",
     "build:start": "yarn run build && yarn run start",
+    "build": "yarn run clean && yarn run build:ts && yarn run build:sass",
     "start": "node dist/index.js"
   },
   "devDependencies": {

@@ -9,6 +9,7 @@ npm install -g nodemon
 npm install -g typings
 npm install -g rimraf
 npm install -g copyfiles
+npm install -g node-sass
 ```
 
 And for install yarn, please check the [official yarn website]
@@ -35,11 +36,11 @@ I recommend to work with visual-studio-code, because it's one of the most popula
     - [x] build
     - [x] watch
     - [x] start
-    - [ ] test
     - [x] setup
-    - [ ] sass
+    - [x] sass
     - [ ] move-static-files
     - [ ] lint
+    - [ ] test
 - [ ] Config
     - [ ] DB
     - [x] Server
