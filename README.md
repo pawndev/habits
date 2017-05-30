@@ -5,11 +5,11 @@ To start this project make sure you've typescript, typings, nodemon, yarn
 ```bash
 npm install -g typescript
 npm install -g bower
-npm install -g nodemon
 npm install -g typings
-npm install -g rimraf
-npm install -g copyfiles
-npm install -g node-sass
+#npm install -g nodemon # not mandatory
+#npm install -g rimraf # not mandatory
+#npm install -g copyfiles # not mandatory
+#npm install -g node-sass # not mandatory
 ```
 
 And for install yarn, please check the [official yarn website]
@@ -38,6 +38,7 @@ I recommend to work with visual-studio-code, because it's one of the most popula
     - [x] start
     - [x] setup
     - [x] sass
+    - [ ] js
     - [ ] move-static-files
     - [ ] lint
     - [ ] test
@@ -63,6 +64,5 @@ I recommend to work with visual-studio-code, because it's one of the most popula
 - [ ] File Logger
 - [ ] Joi Validation
 - [ ] LDAP Token
-- [ ] Activate Template Engine (nunjuck)
 
 [official yarn website]: https://yarnpkg.com/fr/docs/install#linux-tab
