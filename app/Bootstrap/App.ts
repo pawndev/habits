@@ -1,12 +1,15 @@
 import * as Hapi from 'hapi';
+import { Connection } from 'typeorm';
 import { IPlugin } from '../Modules/Common/Interface/Hapi/IPlugin';
 import { IModuleObject } from './Interface/IModuleObject';
+import Database from './Database';
 
 const Path = require('path');
 
 export default class App {
     private server: Hapi.Server;
     private baseModulePath: string = `../Modules`;
+    private connection: Connection;
 
     constructor(HapiSettings: Object) {
         this.server = new Hapi.Server();
@@ -56,6 +59,16 @@ export default class App {
         this.SetTemplateEngine(moduleNameList, ViewsConfig);
 
         return this;
+    }
+
+    LoadDatabase(database: Database) {
+        database.Connect(this.LoadConnection);
+
+        return this;
+    }
+
+    private LoadConnection(connection: Connection) {
+        this.connection = connection;
     }
 
     private LoadAssetDir(path: string, dirPath: string) {
@@ -151,5 +164,9 @@ export default class App {
         }, ViewsConfig);
 
         (this.server as any).views(ViewsConfigFork);
+    }
+
+    private AddToDIContainer() {
+        
     }
 }

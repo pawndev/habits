@@ -1,10 +1,16 @@
 import * as Hapi from 'hapi';
 import { controller, get, post, put, cache, config, route, validate, Controller } from 'hapi-decorators';
+import {Container, Service, Inject} from "typedi";
+import LogService from '../Services/LogService';
 
 @controller('/test')
 export default class TestController implements Controller {
     baseUrl: string;
     routes: () => Hapi.RouteConfiguration[];
+    
+    @Inject()
+    logService: LogService;
+
 
     @get('/')
     @config({
@@ -17,6 +23,8 @@ export default class TestController implements Controller {
         payload: false
     })
     getHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
+        this.logService.log("message");
+        
         (reply as any).view("index", {
             title: request.server.version,
             message: 'Index'

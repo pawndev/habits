@@ -9,7 +9,7 @@ import Views from './Views';
 const env = process.env;
 
 const Config : IConfig = {
-    isProd: (env.NODE_ENV === "prod") ? true : false,
+    isProd: (env.NODE_ENV === "production") ? true : false,
     DB: DBConfig,
     ServerSettings: ServerSettings,
     Uri: Uri,
