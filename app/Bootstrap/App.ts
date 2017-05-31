@@ -1,7 +1,7 @@
 import * as Hapi from 'hapi';
-import { Connection } from 'typeorm';
 import { IPlugin } from '../Modules/Common/Interface/Hapi/IPlugin';
 import { IModuleObject } from './Interface/IModuleObject';
+import { Container } from 'typedi';
 import Database from './Database';
 
 const Path = require('path');
@@ -9,7 +9,7 @@ const Path = require('path');
 export default class App {
     private server: Hapi.Server;
     private baseModulePath: string = `../Modules`;
-    private connection: Connection;
+    private database: Database;
 
     constructor(HapiSettings: Object) {
         this.server = new Hapi.Server();
@@ -62,13 +62,10 @@ export default class App {
     }
 
     LoadDatabase(database: Database) {
-        database.Connect(this.LoadConnection);
-
+        this.database = database;
+        Container.set(Database, this.database);
+        
         return this;
-    }
-
-    private LoadConnection(connection: Connection) {
-        this.connection = connection;
     }
 
     private LoadAssetDir(path: string, dirPath: string) {

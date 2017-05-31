@@ -1,16 +1,16 @@
 import * as Hapi from 'hapi';
 import { controller, get, post, put, cache, config, route, validate, Controller } from 'hapi-decorators';
 import {Container, Service, Inject} from "typedi";
-import LogService from '../Services/LogService';
+import Database from '../../../Bootstrap/Database';
+import DB from '../Decorators/DBDecorator';
 
 @controller('/test')
 export default class TestController implements Controller {
     baseUrl: string;
     routes: () => Hapi.RouteConfiguration[];
-    
-    @Inject()
-    logService: LogService;
 
+    @DB
+    DB: Database;
 
     @get('/')
     @config({
@@ -22,12 +22,13 @@ export default class TestController implements Controller {
     @validate({
         payload: false
     })
-    getHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
-        this.logService.log("message");
-        
+    async getHandler(request: Hapi.Request, reply: Hapi.ReplyWithContinue) {
+        let usersLength = await this.DB.Users.count();
+
         (reply as any).view("index", {
             title: request.server.version,
-            message: 'Index'
+            message: 'Index',
+            usersLength: usersLength
         });
         // reply({ success: true, msg: "billy" });
     }
