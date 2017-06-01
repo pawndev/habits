@@ -10,7 +10,7 @@
     "setup": "yarn && typings install",
     "build:njk": "cpx \"app/**/*.njk\" dist",
     "build:ts": "tsc",
-    "build:js": "babel app/public/js --out-dir dist/public/js --presets es2015 --plugins=transform-runtime",
+    "build:js": "webpack --config webpack.config.js",
     "build:sass": "node-sass -r app/public/sass/ -o dist/public/css/",
     "build:img": "imagemin app/public/image/* --out-dir=dist/public/image/",
     "build:watch": "nodemon -e ts --watch app --exec \"yarn run build && yarn run start\"",
