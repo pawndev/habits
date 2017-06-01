@@ -5,7 +5,6 @@ const DB = (target: Object, key: string | symbol) => {
     let value = Container.get(Database);
  
     const getter = () =>  {
-        console.log("Getting value: ", value);
         return value;
     };
 
