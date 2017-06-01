@@ -26,6 +26,8 @@ export default class TestController implements Controller {
         let usersLength = await this.DB.Users.count();
 
         (reply as any).view("index", {
+            namespace: "test",
+            func: "",
             title: request.server.version,
             message: 'Index',
             usersLength: usersLength

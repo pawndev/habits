@@ -13,9 +13,9 @@
     "build:js": "webpack --config webpack.config.js",
     "build:sass": "node-sass -r app/public/sass/ -o dist/public/css/",
     "build:img": "imagemin app/public/image/* --out-dir=dist/public/image/",
-    "build:watch": "nodemon -e ts --watch app --exec \"yarn run build && yarn run start\"",
+    "build:watch": "nodemon -e ts,njk,scss,js --watch app --exec \"yarn run build && yarn run start\"",
     "build:start": "yarn run build && yarn run start",
-    "build": "yarn run clean && yarn run build:ts && yarn run build:sass && yarn run build:img && yarn run build:njk",
+    "build": "yarn run clean && yarn run build:ts && yarn run build:sass && yarn run build:js && yarn run build:img && yarn run build:njk",
     "start": "env-cmd ./.env node dist/index.js"
   },
   "devDependencies": {
