@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
-  "author": "",
+  "author": "pawndev <coquelet.c@gmail.com>",
   "license": "ISC",
   "scripts": {
     "clean": "rimraf dist habits",
