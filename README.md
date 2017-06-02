@@ -6,10 +6,6 @@ To start this project make sure you've typescript, typings, nodemon, yarn
 npm install -g typescript
 npm install -g bower
 npm install -g typings
-#npm install -g nodemon # not mandatory
-#npm install -g rimraf # not mandatory
-#npm install -g copyfiles # not mandatory
-#npm install -g node-sass # not mandatory
 ```
 
 And for install yarn, please check the [official yarn website]
@@ -38,12 +34,12 @@ I recommend to work with visual-studio-code, because it's one of the most popula
     - [x] start
     - [x] setup
     - [x] sass
-    - [ ] js
-    - [ ] move-static-files
+    - [x] js
+    - [x] move-static-files
     - [ ] lint
     - [ ] test
 - [ ] Config
-    - [ ] DB
+    - [x] DB
     - [x] Server
     - [x] Static files
     - [x] Views
@@ -55,10 +51,10 @@ I recommend to work with visual-studio-code, because it's one of the most popula
 - [x] Routes
 - [x] Plugins
 - [x] Services
-- [ ] @inject decorator || DI
-- [ ] ORM
-    - [ ] Implementation
-    - [ ] Entity
+- [x] TypeDI
+- [x] ORM
+    - [x] Implementation
+    - [x] Entity
 - [ ] Units Test
 - [ ] TSLint
 - [ ] File Logger
