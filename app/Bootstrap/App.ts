@@ -155,9 +155,17 @@ export default class App {
         });
 
         let ViewsConfigFork: Object = Object.assign({
-            path: templateDirectories,
+            /* path: templateDirectories,
             layoutPath: Path.join(__dirname, this.baseModulePath, "Common/Views/layout"),
             helpersPath: Path.join(__dirname, this.baseModulePath, "Common/Views/helpers"),
+            partialsPath: Path.join(__dirname, this.baseModulePath, "Common/Views/partials"),
+            allowAbsolutePaths: true,
+            allowInsecureAccess: true,*/  // waiting to see how to do this whith nunjucks
+            // relativeTo: Path.join(__dirname, '..', 'public'),
+            path: Path.join(__dirname, '..', 'public/views'),
+            layoutPath: Path.join(__dirname, '..', 'public/views/layout'),
+            helpersPath: Path.join(__dirname, '..', 'public/views/helpers'),
+            partialsPath: Path.join(__dirname, '..', 'public/views/partials'),
         }, ViewsConfig);
 
         (this.server as any).views(ViewsConfigFork);
